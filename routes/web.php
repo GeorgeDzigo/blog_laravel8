@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+$p = 'App\Http\Controllers';
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get("/", "$p\BlogController@blogs")->name("blogs");
+
+Route::get("/blogs/{blog}", "$p\BlogController@viewBlog")->name("blog");
