@@ -20,7 +20,8 @@
 
     <link rel="stylesheet" href="https://startbootstrap.github.io/startbootstrap-clean-blog-jekyll/assets/main.css">
     <link rel="canonical" href="https://startbootstrap.github.io/startbootstrap-clean-blog-jekyll/">
-    <link rel="alternate" type="application/rss+xml" title="Clean Blog" href="/startbootstrap-clean-blog-jekyll/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Clean Blog" href="https://startbootstrap.github.io/startbootstrap-clean-blog-jekyll/feed.xml">
+    @yield('createBlog')
 
 </head>
     <body>
@@ -41,10 +42,13 @@
                     </li>
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route("blogs") }}">Create Blogs</a>
+                            <a class="nav-link" href="{{ route("blog.create") }}">Create Blogs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Hello {{ auth()->user()->name }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("logout") }}">Logout</a>
                         </li>
                     @else
                         <li class="nav-item">
@@ -61,5 +65,75 @@
             </div>
             </nav>
 @yield('content')
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+
+            <li class="list-inline-item">
+              <a href="mailto:your-email@example.com">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+
+
+            <li class="list-inline-item">
+              <a href="https://twitter.com/SBootstrap">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+
+
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/StartBootstrap">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+
+
+
+            <li class="list-inline-item">
+              <a href="https://github.com/StartBootstrap">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+
+
+          </ul>
+          <p class="copyright text-muted">Copyright © Start Bootstrap 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="/startbootstrap-clean-blog-jekyll/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/startbootstrap-clean-blog-jekyll/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/startbootstrap-clean-blog-jekyll/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+  <script src="/startbootstrap-clean-blog-jekyll/assets/scripts.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXXXXXX-X');
+  </script>
     </body>
 </html>
