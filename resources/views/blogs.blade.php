@@ -33,7 +33,7 @@
             <a href="{{ route("blog", $blog->id) }}">
             <h2 class="post-title">{{ $blog->title }}</h2>
 
-            <h3 class="post-subtitle">{{ $blog->desc }}</h3>
+            <h5 class="post-subtitle">{{ $blog->desc }}</h5>
 
             </a>
             <p class="post-meta">Posted by User,  {{ date('D m-Y', strtotime($blog->created_at)) }}, Views : {{ $blog->views }}</p>

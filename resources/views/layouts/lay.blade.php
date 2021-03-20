@@ -38,12 +38,9 @@
                     <a class="nav-link" href="{{ route("blogs") }}">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route("blogs") }}">Posts</a>
+                        <a class="nav-link" href="{{ route("blog.create") }}">Create Blogs</a>
                     </li>
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route("blog.create") }}">Create Blogs</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Hello {{ auth()->user()->name }}</a>
                         </li>

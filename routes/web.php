@@ -21,6 +21,8 @@ Route::get("/", "$p\BlogController@blogs")->name("blogs");
 
 Route::get("/blogs/{blog}", "$p\BlogController@viewBlog")->name("blog");
 
+Route::post('/blogs/{blog}', "$p\BlogController@postComment");
+
 Route::get("/logout", function() {
      Auth::logout();
      return redirect('/');

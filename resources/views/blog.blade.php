@@ -1,6 +1,7 @@
 @extends('layouts.lay')
 @section('createBlog')
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
 <style>
     body{
     margin-top:20px;
@@ -76,18 +77,49 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <img class="img-fluid" src="{{ $blog->photo_path }}" alt="Demo Image">
 <p>{{ $blog->body }}</p>
-
+            <br>
             <h6>Views: {{ $blog->views }}</h6>
           <hr>
 
         </div>
       </div>
         @auth
-            <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="wrapper">
+                        <div id="page" class="container">
+                            <form action="/blogs/{{$blog->id}}" method="post">
+                                @csrf
+                                {{-- BODY --}}
+                                <div class="field">
+                                        <label for="comment" class="label">Comment</label>
+
+                                        <div class="control">
+                                            <textarea
+                                                class="textarea @error("comment") is-danger @enderror"
+                                                name="comment"
+                                                id="comment"
+                                            >{{ old("comment") }}</textarea>
+
+                                            @error("comment")
+                                            <p class="help is-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                </div>
+
+                                {{-- SUBMIT --}}
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button class="button is-link" type='submit'>Comment</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <hr>
         @endauth
      {{-- Comments --}}
                <br>
@@ -102,7 +134,7 @@
                              <div class="g-mb-15">
                                <h5 class="h5 g-color-gray-dark-v1 mb-0">{{ $comment->user->name }}</h5>
                              </div>
-
+                             <br>
                              <p>{{ $comment->comment }}</p>
                            </div>
                        </div>
