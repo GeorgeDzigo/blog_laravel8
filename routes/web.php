@@ -23,10 +23,6 @@ Route::get("/blogs/{blog}", "$p\BlogController@viewBlog")->name("blog");
 
 Route::post('/blogs/{blog}', "$p\BlogController@postComment");
 
-Route::get("/logout", function() {
-     Auth::logout();
-     return redirect('/');
-})->middleware("auth")->name("logout");
 
 
 Route::get("/create", function() {  return view("create");  })->name("blog.create")->middleware("auth");
